@@ -1,0 +1,199 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Set up dark/light theme system */
+:root {
+  --text-primary: #1a202c;
+  --text-secondary: #4a5568;
+  --bg-primary: #f7fafc;
+  --bg-secondary: #edf2f7;
+  --bg-card: #ffffff;
+  --accent-primary: #667eea;
+  --accent-secondary: #764ba2;
+}
+
+.dark {
+  --text-primary: #f7fafc;
+  --text-secondary: #a0aec0;
+  --bg-primary: #1a202c;
+  --bg-secondary: #2d3748;
+  --bg-card: #2d3748;
+  --accent-primary: #7f9cf5;
+  --accent-secondary: #9f7aea;
+}
+
+body {
+  transition: background-color 0.3s ease;
+  @apply antialiased;
+}
+
+/* Animation effects */
+.animate-fade-in {
+  animation: fadeIn 0.5s ease forwards;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Enhanced background animations */
+@keyframes pulse {
+  0% {
+    transform: scale(0.8) translateY(0);
+    opacity: 0.3;
+  }
+  50% {
+    transform: scale(1.2) translateY(-15px);
+    opacity: 0.6;
+  }
+  100% {
+    transform: scale(0.8) translateY(0);
+    opacity: 0.3;
+  }
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-20px) rotate(5deg);
+  }
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
+}
+
+@keyframes glow {
+  0% {
+    box-shadow: 0 0 5px rgba(255, 255, 255, 0.1);
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+  }
+  100% {
+    box-shadow: 0 0 5px rgba(255, 255, 255, 0.1);
+  }
+}
+
+/* Triangle styles */
+.triangle-row {
+  position: absolute;
+  width: 100%;
+  height: 100px;
+  display: flex;
+  justify-content: space-between;
+  z-index: 0;
+}
+
+.triangle {
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-left: 30px solid transparent;
+  border-right: 30px solid transparent;
+  border-bottom: 60px solid rgba(255, 255, 255, 0.1);
+  animation: pulse 6s infinite ease-in-out;
+  transform-origin: center bottom;
+  filter: blur(0.5px);
+}
+
+.dark .triangle.orange {
+  border-bottom-color: rgba(255, 165, 0, 0.15);
+  animation: pulse 6s infinite ease-in-out, float 8s infinite ease-in-out;
+}
+
+.dark .triangle.white {
+  border-bottom-color: rgba(255, 255, 255, 0.1);
+  animation: pulse 7s infinite ease-in-out, float 9s infinite ease-in-out;
+}
+
+.dark .triangle.skyblue {
+  border-bottom-color: rgba(135, 206, 235, 0.15);
+  animation: pulse 8s infinite ease-in-out, float 10s infinite ease-in-out;
+}
+
+/* Light theme triangles with more vibrant colors */
+.light .triangle.orange {
+  border-bottom-color: rgba(255, 165, 0, 0.3);
+  animation: pulse 6s infinite ease-in-out, float 8s infinite ease-in-out;
+}
+
+.light .triangle.white {
+  border-bottom-color: rgba(79, 70, 229, 0.25);
+  animation: pulse 7s infinite ease-in-out, float 9s infinite ease-in-out;
+}
+
+.light .triangle.skyblue {
+  border-bottom-color: rgba(56, 189, 248, 0.3);
+  animation: pulse 8s infinite ease-in-out, float 10s infinite ease-in-out;
+}
+
+/* CGPA color classes with enhanced glow effects */
+.bright-green { 
+  color: #22c55e;
+  text-shadow: 0 0 10px rgba(34, 197, 94, 0.5),
+               0 0 20px rgba(34, 197, 94, 0.3),
+               0 0 30px rgba(34, 197, 94, 0.1);
+  animation: glow 2s infinite ease-in-out;
+}
+
+.dark-green { 
+  color: #10b981;
+  text-shadow: 0 0 10px rgba(16, 185, 129, 0.5),
+               0 0 20px rgba(16, 185, 129, 0.3),
+               0 0 30px rgba(16, 185, 129, 0.1);
+  animation: glow 2s infinite ease-in-out;
+}
+
+.yellow { 
+  color: #eab308;
+  text-shadow: 0 0 10px rgba(234, 179, 8, 0.5),
+               0 0 20px rgba(234, 179, 8, 0.3),
+               0 0 30px rgba(234, 179, 8, 0.1);
+  animation: glow 2s infinite ease-in-out;
+}
+
+.orange { 
+  color: #f97316;
+  text-shadow: 0 0 10px rgba(249, 115, 22, 0.5),
+               0 0 20px rgba(249, 115, 22, 0.3),
+               0 0 30px rgba(249, 115, 22, 0.1);
+  animation: glow 2s infinite ease-in-out;
+}
+
+.red { 
+  color: #ef4444;
+  text-shadow: 0 0 10px rgba(239, 68, 68, 0.5),
+               0 0 20px rgba(239, 68, 68, 0.3),
+               0 0 30px rgba(239, 68, 68, 0.1);
+  animation: glow 2s infinite ease-in-out;
+}
+
+/* Light theme overrides for CGPA colors */
+.light .bright-green {
+  color: #15803d;
+  text-shadow: none;
+}
+
+.light .dark-green {
+  color: #047857;
+  text-shadow: none;
+}
+
+.light .yellow {
+  color: #ca8a04;
+  text-shadow: none;
+}
+
+.light .orange {
+  color: #ea580c;
+  text-shadow: none;
+}
+
+.light .red {
+  color: #dc2626;
+  text-shadow: none;
+}
